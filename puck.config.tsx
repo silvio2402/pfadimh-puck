@@ -1,6 +1,6 @@
 import type { Config } from "@measured/puck";
 import type { TextProps } from "./components/Text";
-import Text from "./components/Text";
+import { textConfig } from "./components/Text";
 
 type Props = {
   Text: TextProps;
@@ -8,14 +8,7 @@ type Props = {
 
 export const config: Config<Props> = {
   components: {
-    Text: {
-      render: Text,
-      fields: {
-        text: {
-          type: "textarea",
-        },
-      },
-    },
+    Text: textConfig,
   },
 };
 
