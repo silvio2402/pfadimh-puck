@@ -1,5 +1,5 @@
 import { ComponentConfig } from "@measured/puck";
-import React, { ComponentProps } from "react";
+import React from "react";
 
 export type TextProps = {
   text: string;
