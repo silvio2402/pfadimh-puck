@@ -1,5 +1,8 @@
+'use server'
+
 import { Data } from "@measured/puck";
 import fs from "fs/promises";
+import { revalidatePath } from "next/cache";
 
 interface DatabaseData {
   navbar: Data;
@@ -16,6 +19,7 @@ export async function savePage(path: string, data: Data) {
   const db = await getDatabase();
   db.page[path] = data;
   await fs.writeFile("database.json", JSON.stringify(db));
+  await revalidatePath(path);
 }
 
 export async function getPage(path: string): Promise<Data | undefined> {
