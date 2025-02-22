@@ -32,7 +32,7 @@ export function FooterEditor({ data }: { data: Partial<Data> }) {
       config={footerConfig}
       data={data}
       overrides={{
-        headerActions: ({ children }) => <HeaderActions children={children} />,
+        headerActions: ({ children }) => <HeaderActions>{children}</HeaderActions>,
       }}
       headerTitle={`Editing Footer`}
       onPublish={async (data) => {
