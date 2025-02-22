@@ -1,4 +1,4 @@
-'use server'
+"use server";
 
 import { Data } from "@measured/puck";
 import fs from "fs/promises";
@@ -22,9 +22,23 @@ export async function savePage(path: string, data: Data) {
   revalidatePath(path);
 }
 
+export async function deletePage(path: string) {
+  const db = await getDatabase();
+  delete db.page[path];
+  await fs.writeFile("database.json", JSON.stringify(db));
+  revalidatePath(path);
+}
+
 export async function getPage(path: string): Promise<Data | undefined> {
   const db = await getDatabase();
   return db.page[path];
+}
+
+export async function saveNavbar(data: Data) {
+  const db = await getDatabase();
+  db.navbar = data;
+  await fs.writeFile("database.json", JSON.stringify(db));
+  revalidatePath("/", "layout");
 }
 
 export async function getNavbar(): Promise<Data | undefined> {
@@ -32,7 +46,19 @@ export async function getNavbar(): Promise<Data | undefined> {
   return db.navbar;
 }
 
+export async function saveFooter(data: Data) {
+  const db = await getDatabase();
+  db.footer = data;
+  await fs.writeFile("database.json", JSON.stringify(db));
+  revalidatePath("/", "layout");
+}
+
 export async function getFooter(): Promise<Data | undefined> {
   const db = await getDatabase();
   return db.footer;
+}
+
+export async function getAllPaths() {
+  const db = await getDatabase();
+  return Object.keys(db.page);
 }
