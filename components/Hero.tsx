@@ -13,12 +13,7 @@ function Hero({ title, url }: HeroProps) {
   return (
     <div className="w-full h-96 relative flex flex-col justify-center overflow-hidden items-center">
       {url && (
-        <Image
-          fill
-          src={url}
-          alt="Hero Image"
-          style={{ objectFit: "cover" }}
-        />
+        <Image fill src={url} alt="Hero Image" style={{ objectFit: "cover" }} />
       )}
       {title && (
         <>
