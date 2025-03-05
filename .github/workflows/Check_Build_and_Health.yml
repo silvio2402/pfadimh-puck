@@ -1,4 +1,4 @@
-name: Build
+name: Build and Start
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  build:
+  start:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,3 +26,12 @@ jobs:
 
       - name: Build
         run: bun run build
+
+      - name: Start
+        run: bun run start &
+
+      - name: Wait for application to start
+        run: sleep 20
+
+      - name: Check health
+        run: curl -f http://localhost:3000
