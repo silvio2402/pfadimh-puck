@@ -27,11 +27,28 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: .
+
   start:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: .
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
       - name: Start
         run: bun run start &
 
