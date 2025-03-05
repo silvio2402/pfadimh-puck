@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  start:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +27,11 @@ jobs:
       - name: Build
         run: bun run build
 
+  start:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Start
         run: bun run start &
 
