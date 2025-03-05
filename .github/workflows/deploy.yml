@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   workflow_run:
-    workflows: ["Start"]
+    workflows: ["Check_Build_and_Health"]
     types:
       - completed
 
