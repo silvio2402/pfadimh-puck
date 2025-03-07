@@ -1,5 +1,7 @@
 FROM oven/bun:1
 
+RUN apt update  && apt install -y curl
+
 WORKDIR /app
 
 COPY package.json ./
