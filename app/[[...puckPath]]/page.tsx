@@ -10,6 +10,7 @@
  * will invalidate the cache as the page is written in /api/puck/route.ts
  */
 
+
 import PageRender from "@components/PageRender";
 import { footerConfig } from "@config/footer.config";
 import { pageConfig } from "@config/page.config";
@@ -17,11 +18,14 @@ import { getFooter, getNavbar, getPage } from "@lib/db/database";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+type Params = Promise<{ puckPath: string[] }>;
+
 export async function generateMetadata({
-  params: { puckPath = [] },
+  params,
 }: {
-  params: { puckPath: string[] };
+  params: Params;
 }): Promise<Metadata> {
+  const { puckPath = [] } = await params;
   const path = `/${puckPath.join("/")}`;
   const page = await getPage(path);
 
@@ -34,11 +38,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
-  params: { puckPath = [] },
-}: {
-  params: { puckPath: string[] };
-}) {
+export default async function Page({ params }: { params: Params }) {
+  const { puckPath = [] } = await params;
   const path = `/${puckPath.join("/")}`;
   const pageData = await getPage(path);
 
@@ -61,7 +62,3 @@ export default async function Page({
     />
   );
 }
-
-// Force Next.js to produce static pages: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamic
-// Delete this if you need dynamic rendering, such as access to headers or cookies
-export const dynamic = "force-static";
