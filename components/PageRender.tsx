@@ -1,11 +1,10 @@
-// @ts-ignore - because for some reason it can't find the declaration file
-import { Render } from "@measured/puck/rsc";
-import type { NavbarConfig, NavbarData } from "@config/navbar.config";
-import type { PageConfig, PageData } from "@config/page.config";
+import { NavbarRender } from "@components/Navbar/NavbarRender";
 import type { FooterConfig, FooterData } from "@config/footer.config";
+import type { NavbarData } from "@config/navbar.config";
+import type { PageConfig, PageData } from "@config/page.config";
+import { Render } from "@measured/puck";
 
 export interface PageRenderProps {
-  navbarConfig: NavbarConfig;
   navbarData: NavbarData;
   pageConfig: PageConfig;
   pageData: PageData;
@@ -14,7 +13,6 @@ export interface PageRenderProps {
 }
 
 async function PageRender({
-  navbarConfig,
   navbarData,
   pageConfig,
   pageData,
@@ -23,7 +21,7 @@ async function PageRender({
 }: PageRenderProps) {
   return (
     <>
-      <Render config={navbarConfig} data={navbarData} />
+      <NavbarRender data={navbarData} />
       <Render config={pageConfig} data={pageData} />
       <Render config={footerConfig} data={footerData} />
     </>
