@@ -12,11 +12,11 @@
 
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import PuckPage from "@components/PageRender";
-import { getFooter, getNavbar, getPage } from "@lib/database";
-import navbarConfig from "@config/navbar.config";
-import pageConfig from "@config/page.config";
-import footerConfig from "@config/footer.config";
+import PageRender from "@components/PageRender";
+import { getFooter, getNavbar, getPage } from "@lib/db/database";
+import { navbarConfig } from "@config/navbar.config";
+import { pageConfig } from "@config/page.config";
+import { footerConfig } from "@config/footer.config";
 
 export async function generateMetadata({
   params: { puckPath = [] },
@@ -51,7 +51,7 @@ export default async function Page({
   const footerData = await getFooter();
 
   return (
-    <PuckPage
+    <PageRender
       {...{
         navbarData,
         pageData,
