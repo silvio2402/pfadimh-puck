@@ -1,9 +1,15 @@
 {
-    "files.associations": {
-        "*.css": "tailwindcss"
-    },
-    "editor.codeActionsOnSave": {
-        "source.organizeImports": "explicit"
-    },
-    "editor.formatOnSave": true
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.indentSize": "tabSize",
+  "editor.detectIndentation": false,
+  "tailwindCSS.experimental.classRegex": [
+    "class:\\s*?[\"'`]([^\"'`]*).*?,"
+  ]
 }
