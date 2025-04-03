@@ -1,5 +1,6 @@
 import { poppins, rockingsodaPlus } from "@lib/fonts/fonts";
 import clsx from "clsx";
+import { Providers } from "../components/Providers";
 import "./globals.css";
 
 export default function RootLayout({
@@ -16,7 +17,7 @@ export default function RootLayout({
           "font-poppins bg-background mud-theme"
         )}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

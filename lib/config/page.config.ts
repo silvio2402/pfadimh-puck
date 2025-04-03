@@ -1,4 +1,5 @@
 import { FlexProps, flexConfig } from "@components/puck/Flex";
+import { GraphicProps, graphicConfig } from "@components/puck/Graphic";
 import { HeadingProps, headingConfig } from "@components/puck/Heading";
 import { HeroProps, heroConfig } from "@components/puck/Hero";
 import { IFrameProps, iframeConfig } from "@components/puck/IFrame";
@@ -17,6 +18,7 @@ import type { Config, Data } from "@measured/puck";
 // @keep-sorted
 export type PageProps = {
   Flex: FlexProps;
+  Graphic: GraphicProps;
   Heading: HeadingProps;
   Hero: HeroProps;
   IFrame: IFrameProps;
@@ -34,6 +36,7 @@ export const pageConfig: PageConfig = sectionThemedConfig({
   // @keep-sorted
   components: {
     Flex: flexConfig,
+    Graphic: graphicConfig,
     Heading: headingConfig,
     Hero: heroConfig,
     IFrame: iframeConfig,
